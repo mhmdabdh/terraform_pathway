@@ -1,0 +1,14 @@
+# 03-Sep-2023 My Actual Files
+#This .gitignore file must always be checked into the SCM from the first commit
+
+#.terraform/*
+#.terraform/*/*
+#.terraform/**
+#because they are heavy and not reqd in SCM
+#None of the above work
+# Local .terraform directories
+**/.terraform/*
+
+.terraform.lock.hcl
+terraform.tfstate.backup
+.git/*
