@@ -26,19 +26,35 @@ resource "aws_instance" "abie_app_server" {
   tags = {
     Name = "Abie App Server" #This will be the tag as well as the name in Front End
   }
-} 
+}
 
 #FOURTH - How to declare a variable
 variable "abie_ec2_instancetype" {
   type = string
+  default = "t2.micro" #Adding this value to avoid getting CLI promt on every \n
+     # \n TF plan or apply. IF you want to test variable prompt, uncomment this "default" string value.
 }
 
 #FIFTH - How to consume a variable (instance_type) and create an EC2
 resource "aws_instance" "abie_app_server2" {
-  ami = "ami-051f7e7f6c2f40dc1"
+  ami           = "ami-051f7e7f6c2f40dc1"
   instance_type = var.abie_ec2_instancetype
   tags = {
     Name = "abie_app_server2"
   }
 
+}
+
+#SIXTH - How to declare locals
+locals {
+  another_instance_type = "t2.nano"
+}
+
+#SEVENTH - How to consume locals during EC2 creation
+resource "aws_instance" "abie_ec2_withlocals" {
+  ami           = "ami-051f7e7f6c2f40dc1"
+  instance_type = local.another_instance_type
+  tags = {
+    Name = "using local parameter"
+  }
 }
