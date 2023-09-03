@@ -30,9 +30,9 @@ resource "aws_instance" "abie_app_server" {
 
 #FOURTH - How to declare a variable
 variable "abie_ec2_instancetype" {
-  type = string
+  type    = string
   default = "t2.micro" #Adding this value to avoid getting CLI promt on every \n
-     # \n TF plan or apply. IF you want to test variable prompt, uncomment this "default" string value.
+  # \n TF plan or apply. IF you want to test variable prompt, uncomment this "default" string value.
 }
 
 #FIFTH - How to consume a variable (instance_type) and create an EC2
@@ -57,4 +57,14 @@ resource "aws_instance" "abie_ec2_withlocals" {
   tags = {
     Name = "using local parameter"
   }
+}
+
+
+#EIGHTH - how to declare an output for EC2 attribute
+#https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+#In this page you will find 2 keywords, aws_instance & iam_intance_profile
+#command construction:  tfec2keyword.abieinstancename.tfiamrolekeyword
+
+output "ec2_instance_iam_role" {
+  value = aws_instance.abie_app_server2.iam_instance_profile
 }
