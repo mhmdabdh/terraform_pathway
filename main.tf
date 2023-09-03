@@ -68,3 +68,13 @@ resource "aws_instance" "abie_ec2_withlocals" {
 output "ec2_instance_iam_role" {
   value = aws_instance.abie_app_server2.iam_instance_profile
 }
+
+#since it returned null values, attempting with csomethile else
+
+output "printing_more_values_using_output" {
+  value = aws_instance.abie_app_server2.private_ip
+  #value1 = aws_instance.abie_app_server2.subnet_id
+  #value2 = aws_instance.abie_app_server2
+  #value3 =
+  #value4 = 
+}
