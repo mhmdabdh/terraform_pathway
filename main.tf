@@ -47,7 +47,7 @@ resource "aws_instance" "abie_app_server2" {
 
 #SIXTH - How to declare locals
 locals {
-  another_instance_type = "t2.nano"
+  another_instance_type = "t2.micro" #making this from nano to micro to avoid charges. Micro is free, Nano is charged
 }
 
 #SEVENTH - How to consume locals during EC2 creation
